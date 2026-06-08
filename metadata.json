@@ -1,0 +1,8 @@
+{
+  "name": "Arka Studio POS",
+  "description": "Sistem Kasir Point-of-Sale (POS) lengkap yang mendukung manajemen meja, multi-metode pembayaran, integrasi QRIS dinamis, inventaris resep, dan laporan laba rugi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
