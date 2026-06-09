@@ -1,29 +1,20 @@
 name: Build Android APK
-on:
-  push:
-    branches: [main, develop]  # Only run on specific branches to save resources
-    
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to latest version for security patches
-
+        uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v4  # Updated version
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle  # Caches Gradle dependencies - significantly faster rebuilds
-
       - name: Build with Gradle
         run: chmod +x gradlew && ./gradlew assembleDebug
-
       - name: Upload APK
-        if: success()  # Only upload if build succeeded
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/*.apk  # Uses wildcard for flexibility
-          retention-days: 5  # Prevents storage bloat from old artifacts
+          path: app/build/outputs/apk/debug/app-debug.apk
